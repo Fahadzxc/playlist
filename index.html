@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Playlist</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+      <!-- LEFT SIDE -->
+      <div class="left-side">
+        <h1>Playlist</h1>
+        <p>Songs that remind me of you</p>
+      </div>
+      <!-- RIGHT SIDE -->
+      <div class="right-side">
+        <!-- Hidden radios -->
+        <input type="radio" name="slider" id="item-1" checked />
+        <input type="radio" name="slider" id="item-2" />
+        <input type="radio" name="slider" id="item-3" />
+        <input type="radio" name="slider" id="item-4" />
+        <input type="radio" name="slider" id="item-5" />
+
+        <!-- CARDS -->
+        <div class="cards">
+          <!-- Song 1: Seasons -->
+          <label class="card" for="item-1" id="song-1">
+            <img src="https://i.imgur.com/lcakoM4.jpeg" alt="Seasons" />
+          </label>
+          <!-- Song 2: ivy -->
+          <label class="card" for="item-2" id="song-2">
+            <img src="https://i.imgur.com/1WuYs5q.jpg" alt="ivy" />
+          </label>
+          <!-- Song 3: Daylight -->
+          <label class="card" for="item-3" id="song-3">
+            <img src="https://i.imgur.com/TqwKj1B.jpg" alt="Daylight" />
+          </label>
+          <!-- Song 4: One Summer’s Day -->
+          <label class="card" for="item-4" id="song-4">
+            <img src="https://i.imgur.com/RhYc6Oi.jpg" alt="One Summer’s Day" />
+          </label>
+          <!-- Song 5: About You -->
+          <label class="card" for="item-5" id="song-5">
+            <img src="https://i.imgur.com/gSSDzIH.jpeg" alt="About You" />
+          </label>
+        </div>
+
+        <!-- AUDIO ELEMENTS (Hidden) -->
+        <!-- NOTE: Place your mp3 files in songs/ folder: song1.mp3, song2.mp3, song3.mp3, song4.mp3, song5.mp3 -->
+        <audio id="audio-1" preload="auto">
+          <source src="songs/song1.mp3" type="audio/mpeg">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio-2" preload="auto">
+          <source src="songs/song2.mp3" type="audio/mpeg">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio-3" preload="auto">
+          <source src="songs/song3.mp3" type="audio/mpeg">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio-4" preload="auto">
+          <source src="songs/song4.mp3" type="audio/mpeg">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio-5" preload="auto">
+          <source src="songs/song5.mp3" type="audio/mpeg">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- PLAYER -->
+        <div class="player">
+          <!-- SONG INFO 1: Seasons -->
+          <div class="song-info active" id="song-info-1">
+            <div class="title">Seasons</div>
+            <div class="song-details">
+              <span class="artist">Wave to Earth</span>
+              <span class="duration">4:16</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <div class="time-indicator">
+              <span class="elapsed"></span>
+              <span class="remaining"></span>
+            </div>
+          </div>
+          <!-- SONG INFO 2: ivy -->
+          <div class="song-info" id="song-info-2">
+            <div class="title">ivy</div>
+            <div class="song-details">
+              <span class="artist">Frank Ocean</span>
+              <span class="duration">4:10</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <div class="time-indicator">
+              <span class="elapsed"></span>
+              <span class="remaining"></span>
+            </div>
+          </div>
+          <!-- SONG INFO 3: Daylight -->
+          <div class="song-info" id="song-info-3">
+            <div class="title">Daylight</div>
+            <div class="song-details">
+              <span class="artist">Taylor Swift</span>
+              <span class="duration">4:45</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <div class="time-indicator">
+              <span class="elapsed"></span>
+              <span class="remaining"></span>
+            </div>
+          </div>
+          <!-- SONG INFO 4: One Summer’s Day -->
+          <div class="song-info" id="song-info-4">
+            <div class="title">One Summer’s Day</div>
+            <div class="song-details">
+              <span class="artist">Joe Hisaishi</span>
+              <span class="duration">4:00</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <div class="time-indicator">
+              <span class="elapsed"></span>
+              <span class="remaining"></span>
+            </div>
+          </div>
+          <!-- SONG INFO 5: About You -->
+          <div class="song-info" id="song-info-5">
+            <div class="title">About You</div>
+            <div class="song-details">
+              <span class="artist">The 1975</span>
+              <span class="duration">5:27</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <div class="time-indicator">
+              <span class="elapsed"></span>
+              <span class="remaining"></span>
+            </div>
+          </div>
+
+          <!-- PLAYER CONTROLS -->
+          <div class="controls">
+            <button id="prev">◁</button>
+            <button id="pause">▐▐</button>
+            <button id="next">▷</button>
+          </div>
+          <!-- EXTRA CONTROLS: Favorite Button Only -->
+          <div class="extra-controls">
+            <button id="favorite" class="favorite-btn">♡</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL (Using the provided pop-up content) -->
+    <div class="modal-overlay" id="notificationModal">
+      <div class="modal-content" id="modalContent">
+        <h2>Someone sent you a playlist</h2>
+        <p>Hey, it’s for you. I hope you listen to it.</p>
+        <button class="modal-close" onclick="closeModal()">Open Playlist</button>
+      </div>
+    </div>
+
+    <!-- Link to external JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

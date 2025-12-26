@@ -1,0 +1,374 @@
+/* Base styles & pastel theme */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Gochi Hand", cursive;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fafafa;
+  transition: background 0.8s ease;
+  text-align: center;
+}
+
+.container {
+  background: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  transition: background-color 0.8s ease, border-color 0.8s ease;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* LEFT SIDE */
+.left-side {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.left-side h1 {
+  margin: 0;
+  font-size: 3.5rem; /* Updated from 3rem */
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  transition: color 0.8s ease;
+}
+
+.left-side p {
+  margin-top: 8px;
+  font-size: 1.4rem; /* Updated from 1.2rem */
+  opacity: 0.75;
+  transition: color 0.8s ease;
+}
+
+/* RIGHT SIDE */
+.right-side {
+  position: relative;
+  flex: 1;
+}
+
+/* Hide radio inputs */
+input[type="radio"] {
+  display: none;
+}
+
+/* Hide audio elements */
+audio {
+  display: none;
+}
+
+/* CARD SLIDER */
+.cards {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.card {
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 2px solid #bbb;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 90%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* SLIDER LOGIC (5 songs) */
+#item-1:checked ~ .cards #song-5,
+#item-2:checked ~ .cards #song-1,
+#item-3:checked ~ .cards #song-2,
+#item-4:checked ~ .cards #song-3,
+#item-5:checked ~ .cards #song-4 {
+  transform: translateX(-40%) scale(0.8);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-2,
+#item-2:checked ~ .cards #song-3,
+#item-3:checked ~ .cards #song-4,
+#item-4:checked ~ .cards #song-5,
+#item-5:checked ~ .cards #song-1 {
+  transform: translateX(40%) scale(0.8);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-1,
+#item-2:checked ~ .cards #song-2,
+#item-3:checked ~ .cards #song-3,
+#item-4:checked ~ .cards #song-4,
+#item-5:checked ~ .cards #song-5 {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+/* PLAYER */
+.player {
+  margin-top: 20px;
+  border: 2px solid #ccc;
+  border-radius: 14px;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.8s ease, border-color 0.8s ease, color 0.8s ease;
+  text-align: left;
+  position: relative;
+}
+
+.song-info {
+  display: none;
+}
+
+.song-info.active {
+  display: block;
+}
+
+.song-info .title {
+  font-size: 1.6rem; /* Updated from 1.4rem */
+  font-family: "Comic Neue", cursive;
+  font-weight: 700;
+  margin-bottom: 5px;
+  transition: color 0.8s ease;
+}
+
+/* New Song Details Row */
+.song-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 1.1rem; /* Updated from 1rem */
+  font-family: "Comic Neue", cursive;
+}
+
+.song-details .artist {
+  text-align: left;
+}
+
+.song-details .duration {
+  text-align: right;
+}
+
+/* Time Indicator (elapsed | remaining) */
+.time-indicator {
+  font-size: 1rem; /* Updated from 0.9rem */
+  margin-top: 3px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Comic Neue", cursive;
+  color: inherit;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 6px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  background-color: #777;
+  transition: width 0.1s linear;
+}
+
+/* PLAYER CONTROLS */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  font-size: 2.5rem; /* Updated from 2rem */
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.8s ease;
+}
+
+.controls button:hover {
+  transform: scale(1.2);
+}
+
+/* EXTRA CONTROLS: Favorite Button Only */
+.extra-controls {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: "Comic Neue", cursive;
+  gap: 10px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 2rem; /* Updated from 1.8rem */
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn.favorited {
+  color: red;
+}
+
+/* MODAL (Enhanced Pop-up with Season Theme) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 14px;
+  font-family: "Comic Neue", cursive;
+  color: #333;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  border: 2px solid #ccc;
+  text-align: center;
+  animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 2rem; /* Updated from 1.8rem */
+}
+
+.modal-content p {
+  font-size: 1.1rem; /* Updated from 1rem */
+}
+
+.modal-close {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-family: "Comic Neue", cursive;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #333;
+}
+
+.modal-close:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Media Query for Tablets/Phones */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: calc(100% - 40px);
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .cards {
+    height: 220px; /* reduce for smaller screens */
+  }
+
+  .card {
+    width: 70%;       /* narrower card */
+    height: 100%;
+  }
+
+  .controls button {
+    font-size: 2rem; /* smaller controls */
+  }
+
+  .left-side h1 {
+    font-size: 2.5rem;
+  }
+
+  .left-side p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Even smaller phones */
+@media (max-width: 480px) {
+  .cards {
+    height: 180px;
+  }
+
+  .card {
+    width: 80%;
+  }
+
+  .controls button {
+    font-size: 1.8rem;
+  }
+}
